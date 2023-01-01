@@ -14,7 +14,7 @@ jobs:
           sudo apt-get install -y zip zipalign bc build-essential zip gcc clang libc6 curl libstdc++6 git wget libssl-dev cpio
           BOARD=alioth
           echo "BOARD=$BOARD" >> $GITHUB_ENV
-          curl -sL https://git.io/file-transfer | bash -s beta
+          curl -sL https://raw.githubusercontent.com/Mikubill/transfer/master/install.sh | bash -s beta
       - name: 拉取源代码和工具链
         run: |
           git clone https://github.com/Tonyha7/android_kernel_xiaomi_chiron msm-4.19 --depth=1
