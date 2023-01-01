@@ -12,7 +12,7 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt-get install -y zip zipalign bc build-essential zip gcc clang libc6 curl libstdc++6 git wget libssl-dev cpio
-          BOARD=alioth
+          BOARD=chiron
           echo "BOARD=$BOARD" >> $GITHUB_ENV
           curl -sL https://raw.githubusercontent.com/Mikubill/transfer/master/install.sh | bash -s beta
       - name: 拉取源代码和工具链
@@ -25,8 +25,8 @@ jobs:
           git clone --depth=1 https://github.com/zclkkk/AnyKernel3 -b main
       - name: 构建内核
         run: |
-          export KBUILD_BUILD_USER="zclkkk"
-          export KBUILD_BUILD_HOST="Server"
+          export KBUILD_BUILD_USER="th7"
+          export KBUILD_BUILD_HOST="tonyha7.com"
           export PATH=/home/runner/work/kernel_build/kernel_build/clang/bin:${PATH}
           args="                  ARCH=arm64 \
                                   O=../out \
