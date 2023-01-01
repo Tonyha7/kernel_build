@@ -1,4 +1,4 @@
-name: 构建Mika内核
+name: 构建chiron内核
 
 on:
   watch:
@@ -17,11 +17,11 @@ jobs:
           curl -sL https://git.io/file-transfer | bash -s beta
       - name: 拉取源代码和工具链
         run: |
-          git clone https://oauth2:${{ secrets.TOKEN }}@github.com/Project-Mika/android_kernel_xiaomi_sm8250 msm-4.19 --depth=1 -b arrow-13.0
+          git clone https://github.com/Tonyha7/android_kernel_xiaomi_chiron msm-4.19 --depth=1
           VERSION="$(cat msm-4.19/arch/arm64/configs/${BOARD}_defconfig | grep "CONFIG_LOCALVERSION\=" | sed -r 's/.*"(.+)".*/\1/' | sed 's/^.//')"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 --depth=1 -b master
-          mv linux-x86/clang-r450784d clang && rm -rf linux-x86
+          mv linux-x86/clang-r475365b clang && rm -rf linux-x86
           git clone --depth=1 https://github.com/zclkkk/AnyKernel3 -b main
       - name: 构建内核
         run: |
