@@ -22,7 +22,7 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 --depth=1 -b master
           mv linux-x86/clang-r475365b clang && rm -rf linux-x86
-          git clone --depth=1 https://github.com/zclkkk/AnyKernel3 -b main
+          git clone --depth=1 https://github.com/zclkkk/AnyKernel3
       - name: 构建内核
         run: |
           export KBUILD_BUILD_USER="th7"
